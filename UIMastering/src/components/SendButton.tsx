@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { s } from "react-native-size-matters";
 import React from "react";
-import SendArrow from "../SendArrow";
+import SendArrow from "../assets/icons";
 
 const SendButton = () => {
   return (

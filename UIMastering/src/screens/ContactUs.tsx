@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import { vs, s } from "react-native-size-matters";
 import React from "react";
-import UserAvatar from "../assets/components/UserAvatar";
-import BackButton from "../assets/components/BackButton";
-import SendButton from "../assets/components/SendButton";
-import WhiteCircle from "../assets/components/WhiteCircle";
+import UserAvatar from "../components/UserAvatar";
+import BackButton from "../components/BackButton";
+import SocialSection from "../components/SocialSection";
+import Entypo from "@expo/vector-icons/Entypo";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 const ContactUs = () => {
   return (
@@ -13,8 +15,32 @@ const ContactUs = () => {
         <BackButton />
         <UserAvatar />
       </View>
-      <SendButton />
-      <WhiteCircle />
+      // Contact Us Outside inside mainview.
+      <Text style={styles.contactTitle}>Contact Us</Text>
+      // Social Section View
+      <View style={styles.socialContainer}>
+        <Text style={styles.socialTitle}>Social Media Platforms</Text>
+        <SocialSection
+          label="Instagram"
+          icon={<Entypo name="instagram" size={24} color="#178AD9" />}
+        />
+        <SocialSection
+          label="GitHub"
+          icon={<AntDesign name="github" size={24} color="#178AD9" />}
+        />
+        <SocialSection
+          label="TikTok"
+          icon={<FontAwesome6 name="tiktok" size={24} color="#178AD9" />}
+        />
+        <SocialSection
+          label="LinkedIn"
+          icon={<Entypo name="linkedin" size={24} color="#178AD9" />}
+        />
+        <SocialSection
+          label="X"
+          icon={<FontAwesome6 name="x-twitter" size={24} color="#178AD9" />}
+        />
+      </View>
     </View>
   );
 };
@@ -29,5 +55,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: s(17),
+  },
+  socialContainer: {
+    backgroundColor: "#F5f5Fa",
+    borderRadius: s(14),
+    paddingHorizontal: s(18),
+    paddingVertical: vs(15),
+    marginTop: vs(22),
+  },
+  socialTitle: {
+    fontSize: s(16),
+    fontWeight: "semibold",
+  },
+  contactTitle: {
+    fontSize: s(30),
+    fontWeight: "semibold",
+    marginTop: s(20),
+    marginLeft: s(20),
   },
 });
