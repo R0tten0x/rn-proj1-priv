@@ -26,7 +26,7 @@ const Total = () => {
         <Text
           style={{
             color: "#181c2E",
-            fontSize: s(30),
+            fontSize: s(20),
             fontWeight: "semibold",
             paddingLeft: s(20),
             marginRight: s(5),

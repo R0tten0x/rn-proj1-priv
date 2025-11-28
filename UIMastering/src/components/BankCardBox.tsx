@@ -1,12 +1,25 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { useRef, useEffect } from "react";
 import { s, vs } from "react-native-size-matters";
 import { CCardIcon } from "../assets/icons";
+import LottieView from "lottie-react-native";
 
 const BankCardBox = () => {
+  // const animation = useRef<LottieView>(null);
   return (
     <View style={styles.container}>
       <CCardIcon />
+      {/* <LottieView
+        autoPlay
+        ref={animation}
+        style={{
+          width: s(150),
+          height: vs(150),
+        }}
+        // Find more Lottie files at https://lottiefiles.com/featured
+        source={require("../assets/cc.json")}
+      /> */}
       <Text
         style={{
           fontSize: s(16),
