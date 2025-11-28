@@ -1,36 +1,39 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { CashIcon, Mastercard, Paypal, VisaCard } from "../assets/icons";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import React, { FC, ReactNode } from "react";
+import {
+  CashIcon,
+  CheckMark,
+  MasterCard,
+  Paypal,
+  VisaCard,
+} from "../assets/icons";
 import { s, vs } from "react-native-size-matters";
 
-const PaymentMethod = ({ isSelected = false }) => {
+interface PaymentMethodProps {
+  isSelected?: boolean;
+  title: String;
+  icon: ReactNode;
+  onPress?: () => void;
+}
+
+const PaymentMethod: FC<PaymentMethodProps> = ({
+  isSelected = false,
+  title,
+  icon,
+  onPress,
+}) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.cardContainer}>
-        <View style={[styles.card, isSelected && styles.selectedCard]}>
-          <CashIcon />
+    <TouchableOpacity onPress={onPress} style={styles.container}>
+      {isSelected && (
+        <View style={styles.checkMark}>
+          <CheckMark />
         </View>
-        <Text style={styles.cardText}>Cash</Text>
+      )}
+      <View style={[styles.card, isSelected && styles.selectedCard]}>
+        {icon}
       </View>
-      <View style={styles.cardContainer}>
-        <View style={styles.card}>
-          <VisaCard />
-        </View>
-        <Text style={styles.cardText}>Visa</Text>
-      </View>
-      <View style={styles.cardContainer}>
-        <View style={styles.card}>
-          <Mastercard />
-        </View>
-        <Text style={styles.cardText}>Mastercard</Text>
-      </View>
-      <View style={styles.cardContainer}>
-        <View style={styles.card}>
-          <Paypal />
-        </View>
-        <Text style={styles.cardText}>Paypal</Text>
-      </View>
-    </View>
+      <Text style={styles.cardText}>{title}</Text>
+    </TouchableOpacity>
   );
 };
 
@@ -38,13 +41,13 @@ export default PaymentMethod;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    width: s(85),
   },
   card: {
     height: vs(72),
     width: s(85),
-    backgroundColor: "#F0F5FA",
     borderRadius: s(10),
+    backgroundColor: "#F0F5FA",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -58,5 +61,23 @@ const styles = StyleSheet.create({
     height: vs(93),
     width: s(85),
   },
-  selectedCard: {},
+  selectedCard: {
+    backgroundColor: "#fff",
+    borderColor: "#ff7622",
+    borderWidth: s(2),
+  },
+  checkMark: {
+    borderWidth: s(2),
+    borderColor: "#fff",
+    backgroundColor: "#ff7622",
+    width: s(24),
+    height: s(24),
+    borderRadius: s(12),
+    position: "absolute",
+    zIndex: 1,
+    top: s(-10),
+    right: s(-5),
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
